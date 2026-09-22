@@ -1,0 +1,46 @@
+public class TypeConversionDemo{
+	static class Fahrenheit{
+	  double temp;
+	  Fahrenheit(double t){ temp = t;}
+	  double getTemp(){return temp;}
+	}
+	static class Celsius{
+	 double temp;
+	 Celsius(Fahrenheit f){
+          temp =(f.getTemp()-32)*5/9;
+	}
+	void show()
+       {System.out.println("Temperature=" + temp + "Celsius");}
+	}
+	public static void main(String[]args){
+	  System.out.println("-----Implicit/Widening Conversion(int to double)----");
+          int a = 10;
+          double b = a;
+          System.out.println("int" + a + "converted to double" + b);
+
+	  System.out.println("\n--- Autoboxing(int to Integer)----");
+	  int num = 25;
+	  Integer boxedNum = num;
+	  System.out.println("Primitive int" + num + "autoboxed to Integer" + boxedNum);
+	  System.out.println("\n----Unboxing(Integer to int)----");
+
+	Integer wrapObj = 40;
+	int unboxed = wrapObj;
+	System.out.println("Integer" + wrapObj + "unboxed to primitive int" + unboxed);
+
+        System.out.println("\n-----Primitive to String-----");
+	double val = 25.5;
+	String strVal = String.valueOf(val);
+	System.out.println("double" + val + "Converted to String\"" + strVal+ "\"");
+	
+	System.out.println("\n----String to Primitive----");
+	String numStr ="123";
+	int parsedInt = Integer.parseInt(numStr);
+	System.out.println("String\"" + numStr + "\" converted to int" + parsedInt);
+
+	System.out.println("\n----Class type to Class type---");
+	Fahrenheit fTemp = new Fahrenheit(98.6);
+	Celsius cTemp = new Celsius(fTemp);
+	cTemp.show();
+       }
+      }
